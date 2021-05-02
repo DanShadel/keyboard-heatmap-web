@@ -16,10 +16,9 @@ const Header = styled.div`
 const Container = styled.div`
 	width: 100vw;
 	height: 10vh;
-`
+`;
 
-const data = {
-	'Tab': 190,
+const data = {'Tab': 190,
 	'3': 78,
 	'W': 513,
 	'S': 189,

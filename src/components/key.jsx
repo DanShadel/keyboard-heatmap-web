@@ -20,10 +20,10 @@ const resolveStyle = (content, color) => {
 		alignItems: 'center',
 		margin: '4px',
 		backgroundColor: color,
-	}
+	};
 
 	return styles;
-}
+};
 
 const resolveWidth = (content) => {
 	switch (content) {
@@ -45,7 +45,7 @@ const resolveWidth = (content) => {
 	default:
 		return '3em';
 	}
-}
+};
 
 const Key = ({content, color}) => {
 	return <div style={resolveStyle(content, color)}> {content} </div>;

@@ -17,35 +17,53 @@ const Container = styled.div`
 
 const getValueForKey = (data, key) => {
 	switch (key) {
+	case 'LShift':
+		return data['Lshift'];
+	case 'RShift':
+		return data['Rshift'];
+	case 'Caps':
+		return data['Capital'];
+	case 'Win':
+		return data['Lwin'];
+	case 'LAlt':
+		return data['Lmenu'];
+	case 'RAlt':
+		return data['Rmenu'];
+	case 'App':
+		return data['Apps'];
+	case 'LCtrl':
+		return data['Lcontrol'];
+	case 'RCtrl':
+		return data['Rcontrol'];
 	default:
-		return data[key]
+		return data[key];
 	}
-}
+};
 
 const getMostPressed = (data) => {
 	let mostPresses = 0;
 	Object.keys(data).forEach(key => {
-		if(data[key] > mostPresses){
+		if (data[key] > mostPresses) {
 			mostPresses = data[key];
 		}
-	})
+	});
 	return mostPresses;
-}
+};
 
 const resolveColor = (data, key, mostPresses) => {
 	const valueForKey = getValueForKey(data, key);
 	let green = 0;
 	let percentage;
 
-	if(valueForKey === 0){
+	if (valueForKey === 0) {
 		return 'white';
 	} else {
 		percentage = valueForKey / mostPresses;
 		console.log(percentage);
 		green = 255 * (1 - percentage);
 	}
-	return 'rgb(255,'+Math.trunc(green)+',0)'; 
-}
+	return 'rgb(255,'+Math.trunc(green)+',0)';
+};
 
 const Keyboard = ({data}) => {
 	const rows = [
@@ -64,9 +82,9 @@ const Keyboard = ({data}) => {
 			{rows.map((row, index) => {
 				return (<KeyRow>
 					{row.map((key, index) => {
-						return <Key content={key} color={resolveColor(data, key, mostPresses)} key={index} />
+						return <Key content={key} color={resolveColor(data, key, mostPresses)} key={index} />;
 					})}
-				</KeyRow>)
+				</KeyRow>);
 
 			})}
 
