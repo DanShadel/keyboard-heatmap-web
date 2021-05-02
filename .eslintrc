@@ -1,0 +1,40 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "env": {
+    "browser": false,
+    "node": true,
+    "es6": true,
+    "mocha": false
+  },
+  "parserOptions": {
+      "sourceType": "module"
+  },
+  "ecmaFeatures": {
+    "arrowFunctions": true,
+    "blockBindings": true,
+    "classes": true,
+    "defaultParams": true,
+    "modules": true,
+    "spread": true,
+    "globalReturn": true,
+  },
+  "rules": {
+    "no-var": 1,
+    "no-eval": "error",
+    "indent": ["error", "tab"],
+    "quotes": ["error", "single"],
+    "space-before-blocks": ["error", "always"],
+    "prefer-arrow-callback": [0, { "allowNamedFunctions": true }],
+    "func-names": ["error", "never"],
+    "keyword-spacing": ["error", {"before": true, "after": true}],
+    "key-spacing": ["error", {"beforeColon": false, "afterColon": true}],
+    "no-mixed-spaces-and-tabs": 0,
+    "no-undef": "warn",
+    "object-curly-spacing": 2,
+    "object-curly-newline": 2,
+    "object-property-newline": 2,
+    "no-unused-vars": 0,
+    "no-trailing-spaces": 2,
+  }
+}
