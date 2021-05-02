@@ -9,15 +9,49 @@ const KeyRow = styled.div`
 
 const Container = styled.div`
 	height: 100%;
-	width: '55em';
+	width: 55em;
 	flex-direction: column;
 	display:flex;
 	margin-left: 10%;
 `;
 
+const Title = styled.div`
+	font-size: 24px;
+	display: flex;
+	justify-content:center;
+	margin-bottom: 1em;
+`;
 
 const getValueForKey = (data, key) => {
 	switch (key) {
+	case 'Enter':
+		return data['Return']
+	case 'Backspace':
+		return data['Back']
+	case ';':
+		return data['Oem_1']
+	case '/':
+		return data['Oem_2']
+	case '`':
+		return data['Oem_3']
+	case '[':
+		return data['Oem_4']
+	case '\\':
+		return data['Oem_5']
+	case ']':
+		return data['Oem_6']
+	case '\'':
+		return data['Oem_7']
+	case '-':
+		return data['Oem_Minus']
+	case '=':
+		return data['Oem_Plus']
+	case ',':
+		return data['Oem_Comma']
+	case '.':
+		return data['Oem_Period']
+	case 'Esc':
+		return data['Escape'];
 	case 'LShift':
 		return data['Lshift'];
 	case 'RShift':
@@ -85,8 +119,9 @@ const resolveColor = (data, key, mostPresses) => {
 	}
 };
 
-const Keyboard = ({data}) => {
+const Keyboard = ({data, title}) => {
 	const rows = [
+		['Esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'],
 		['`','1','2','3','4','5','6','7','8','9','0','-','=','Backspace'],
 		['Tab', 'Q', 'W','E','R','T','Y','U','I','O','P','[',']','\\'],
 		['Caps','A','S','D','F','G','H','J','K','L',';','\'', 'Enter'],
@@ -97,7 +132,7 @@ const Keyboard = ({data}) => {
 
 	return (
 		<Container>
-
+			<Title> {title} </Title>
 			{rows.map((row, index) => {
 				return (<KeyRow>
 					{row.map((key, index) => {
@@ -106,25 +141,6 @@ const Keyboard = ({data}) => {
 				</KeyRow>);
 
 			})}
-
-
-
-			{/*<Key content={'A'}/>*/}
-			{/*<KeyRow> {rows[0].forEach((key) => {
-				return <Key content={key}/>
-			})}
-			</KeyRow>*/}
-			{/*
-			{rows.forEach((keys) => {
-				return (
-					<KeyRow>
-					 	{keys.forEach((key, index) => {
-					 		console.log(key);
-							return  (<Key> </Key>);
-						})}
-				</KeyRow>
-				);
-			})}*/}
 		</Container>
 	);
 };

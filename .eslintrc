@@ -23,10 +23,13 @@
     "no-mixed-spaces-and-tabs": 0,
     "no-undef": "warn",
     "object-curly-spacing": 2,
-    "object-curly-newline": 2,
+    "object-curly-newline": ["error", {"minProperties": 8}],
     "object-property-newline": 2,
     "no-unused-vars": 0,
     "no-trailing-spaces": 2,
-    "semi": ["error", "always"]
+    "semi": ["error", "always"],
+    "no-multi-spaces": "error",
+    "comma-style": ["error", "last"],
+    "no-multiple-empty-lines": ["error", {"max": 2, "maxEOF": 0}],
   }
 }
