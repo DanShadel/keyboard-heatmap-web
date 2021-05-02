@@ -15,6 +15,7 @@ const Container = styled.div`
 	margin-left: 10%;
 `;
 
+
 const getValueForKey = (data, key) => {
 	switch (key) {
 	case 'LShift':
