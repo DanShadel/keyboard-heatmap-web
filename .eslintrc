@@ -10,15 +10,6 @@
   "parserOptions": {
       "sourceType": "module"
   },
-  "ecmaFeatures": {
-    "arrowFunctions": true,
-    "blockBindings": true,
-    "classes": true,
-    "defaultParams": true,
-    "modules": true,
-    "spread": true,
-    "globalReturn": true,
-  },
   "rules": {
     "no-var": 1,
     "no-eval": "error",
