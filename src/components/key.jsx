@@ -9,39 +9,61 @@ const Container = styled.div`
 `;
 
 const resolveStyle = (content, color) => {
-	console.log(color);
-	let styles = {
-		width: resolveWidth(content),
-		height: '3em',
-		border: '1px solid black',
-		borderRadius: '4px',
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		margin: '4px',
-		backgroundColor: color,
-	};
+	let styles;
+	let ghost = '#D3D3D3';
+	if (color === 'ghost') {
+		styles = {
+			width: resolveWidth(content),
+			height: '3em',
+			border: '1px solid '+ ghost,
+			borderRadius: '4px',
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			margin: '.25em',
+			backgroundColor: 'white',
+			color: ghost
+		};
 
+	} else {
+		styles = {
+			width: resolveWidth(content),
+			height: '3em',
+			border: '1px solid black',
+			borderRadius: '4px',
+			display: 'flex',
+			justifyContent: 'center',
+			alignItems: 'center',
+			margin: '.25em',
+			backgroundColor: color,
+		};
+
+	}
 	return styles;
 };
 
 const resolveWidth = (content) => {
 	switch (content) {
-	case 'Tab':
-	case 'LCtrl':
 	case 'RCtrl':
-	case 'LAlt':
+		return '6.8em';
+	case 'Tab':
 	case 'RAlt':
+	case 'LCtrl':
+	case 'LAlt':
 		return '4em';
 	case 'Caps':
+	case '\\':
 		return '5em';
 	case 'Backspace':
 	case 'LShift':
-	case 'RShift':
-	case 'Enter':
 		return '6em';
+	case 'Enter':
+		return '7.7em';
+	case 'RShift':
+		return '10.35em';
 	case 'Space':
-		return '18em';
+		return '21em';
+
 	default:
 		return '3em';
 	}

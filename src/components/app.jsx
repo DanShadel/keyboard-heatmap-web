@@ -4,18 +4,18 @@ import Keyboard from './keyboard.jsx';
 
 const Header = styled.div`
 	width: 100%;
-	height: 10em;
-	background-color: black;
-	color: white;
-	font-size: 20px;
+	height: 5em;
+	color: black;
+	font-size: 24px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
 
 const Container = styled.div`
-	width: 100vw;
+	width: 80vw;
 	height: 10vh;
+	margin: 10em;
 `;
 
 const data = {'Tab': 190,
@@ -68,6 +68,7 @@ const data = {'Tab': 190,
 const App = () => {
 	return (
 		<Container>
+			<Header> Valorant Key Usage </Header>
 			<Keyboard data={data}/>
 		</Container>
 	);

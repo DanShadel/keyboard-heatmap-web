@@ -5,14 +5,14 @@ import Key from './key.jsx';
 const KeyRow = styled.div`
 	display: flex;
 	flex-direction: row;
-	margin-top: .25em;
 `;
 
 const Container = styled.div`
 	height: 100%;
-	width: 100%;
+	width: '55em';
 	flex-direction: column;
 	display:flex;
+	margin-left: 10%;
 `;
 
 const getValueForKey = (data, key) => {
@@ -53,16 +53,35 @@ const getMostPressed = (data) => {
 const resolveColor = (data, key, mostPresses) => {
 	const valueForKey = getValueForKey(data, key);
 	let green = 0;
+	let blue = 0;
+	let red = 125;
+	let totalScale = 635; //scale goes from rgb(125,0,0) to rgb(255,255,255) or 635 points
+	let scaledValue;
 	let percentage;
 
-	if (valueForKey === 0) {
-		return 'white';
+	if (valueForKey === undefined) {
+		return 'ghost';
 	} else {
 		percentage = valueForKey / mostPresses;
-		console.log(percentage);
-		green = 255 * (1 - percentage);
+		scaledValue = 635 - Math.trunc(percentage * totalScale);
+		console.log(scaledValue);
+
+		//     **********************************************
+		// 	   0	only red  130	red + green	 385  r+g+b 635
+
+		if (scaledValue <= 130) {
+			red += scaledValue;
+		} else if (scaledValue <= 385) {
+			red = 255;
+			green = scaledValue - 130;
+		} else {
+			red = 255;
+			green = 255;
+			blue = scaledValue - 130 - 255;
+		}
+
+		return 'rgb('+ red +','+green+',' + blue + ')';
 	}
-	return 'rgb(255,'+Math.trunc(green)+',0)';
 };
 
 const Keyboard = ({data}) => {
@@ -73,7 +92,6 @@ const Keyboard = ({data}) => {
 		['LShift','Z','X','C','V','B','N','M',',','.','/', 'RShift'],
 		['LCtrl', 'Win', 'LAlt', 'Space', 'RAlt', 'Fn', 'App', 'RCtrl']
 	];
-	console.log(data);
 	const mostPresses = getMostPressed(data);
 
 	return (
